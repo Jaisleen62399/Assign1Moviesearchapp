@@ -12,7 +12,7 @@ import com.google.gson.Gson
 class MovieRepository {
    private val client = OkHttpClient()
    private val gson = Gson()
-   private val apiKey = "1e267f96" // ✅ Your actual API key
+   private val apiKey = "1e267f96"
 
    // 🔍 Search movies by keyword
    suspend fun searchMovies(query: String): List<Movie>? = withContext(Dispatchers.IO) {
