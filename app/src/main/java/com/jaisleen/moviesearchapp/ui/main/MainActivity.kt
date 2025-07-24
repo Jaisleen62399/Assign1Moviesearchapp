@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.jaisleen.moviesearchapp.databinding.ActivityMainBinding
 import com.jaisleen.moviesearchapp.ui.details.MovieDetailsActivity
 import com.jaisleen.moviesearchapp.viewmodel.MovieViewModel
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity() {
          intent.putExtra("MOVIE_ID", movie.imdbID)
          startActivity(intent)
       }
+
+      // Set the LayoutManager for RecyclerView
+      binding.recyclerView.layoutManager = LinearLayoutManager(this)
       binding.recyclerView.adapter = adapter
 
       binding.btnSearch.setOnClickListener {
@@ -34,8 +37,8 @@ class MainActivity : AppCompatActivity() {
          }
       }
 
-      viewModel.movieList.observe(this) {
-         adapter.submitList(it)
+      viewModel.movieList.observe(this) { movies ->
+         adapter.submitList(movies)
       }
    }
 }
