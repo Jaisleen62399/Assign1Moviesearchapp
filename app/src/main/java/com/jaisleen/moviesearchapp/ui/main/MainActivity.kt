@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
       // Set the LayoutManager for RecyclerView
       binding.recyclerView.layoutManager = LinearLayoutManager(this)
+      binding.recyclerView.setHasFixedSize(true)
       binding.recyclerView.adapter = adapter
 
       binding.btnSearch.setOnClickListener {
